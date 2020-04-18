@@ -35,7 +35,6 @@
         </div>
         <!-- /.row -->
     </div>
-
     <!-- Side Widget Well -->
     <?php
         include "includes/widget.php";
