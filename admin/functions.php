@@ -54,3 +54,43 @@
             header("Location: categories.php");
         }
     }
+
+    function all_posts() {
+        global $connection;
+        $query = "SELECT * fROM posts";
+        $display_posts_query = mysqli_query($connection, $query);
+
+        while ($row = mysqli_fetch_assoc($display_posts_query)) {
+            $post_id = $row['id'];
+            $post_category = $row['post_category_id'];
+            $post_title = $row['post_title'];
+            $post_author = $row['post_author'];
+            $post_date = $row['post_date'];
+            $post_content = $row['post_content'];
+            $post_tags = $row['post_tags'];
+            $post_comment_count = $row['post_comment_count'];
+            $post_status = $row['post_status'];
+            $post_image = $row['post_image'];
+
+            echo '<tr>';
+            echo "<td style='font-weight: bold;'>{$post_title}</td>";
+            echo "<td>{$post_category}</td>";
+            echo "<td>{$post_author}</td>";
+            echo "<td>{$post_date}</td>";
+            echo "<td>{$post_content}</td>";
+            echo "<td>{$post_tags}</td>";
+            echo "<td>{$post_comment_count}</td>";
+            echo "<td>{$post_status}</td>";
+            echo "<td><img  src='../images/$post_image' class='img-responsive img-rounded' style='max-height: 100px;' ></td>";
+
+//            echo "<td>
+//                            <a href='categories.php?delete={$cat_id}' class='btn btn-danger'>
+//                                <i class=\"glyphicon glyphicon-remove\"></i>
+//                            </a>
+//                            <a href='categories.php?edit={$cat_id}' class='btn btn-warning'>
+//                                <i class=\"glyphicon glyphicon-edit\"></i>
+//                            </a>
+//                    </td>";
+            echo '</tr>';
+        }
+    }

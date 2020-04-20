@@ -24,12 +24,12 @@
 								<input type="submit" name="submit" class="btn btn-primary" value="Add Category">
 							</div>
 						</form>
-						<?php
-							if (isset($_GET['edit'])) {
-								$cat_id = $_GET['edit'];
-								include "includes/update_categories.php";
-							}
-						?>
+                        <?php
+                            if (isset($_GET['edit'])) {
+                                $cat_id = $_GET['edit'];
+                                include "includes/update_categories.php";
+                            }
+                        ?>
 					</div>
 					<div class="col-xs-6">
 						<table class="table table-bordered table-hover">
@@ -42,7 +42,7 @@
 							</thead>
 							<tbody>
                             <?php all_categories(); ?>
-							<?php delete_category(); ?>
+                            <?php delete_category(); ?>
 							</tbody>
 						</table>
 					</div>
