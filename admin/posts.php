@@ -26,7 +26,7 @@
                         include "includes/create_posts.php";
                         break;
 
-                        case '35';
+                        case 'delete';
                         echo "Nice work 35";
                         break;
 

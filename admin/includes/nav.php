@@ -61,7 +61,7 @@
                     <a href="posts.php"> View all Posts</a>
                 </li>
                 <li>
-                    <a href="#"> Create post</a>
+                    <a href="posts.php?source=create_post"> Create post</a>
                 </li>
             </ul>
             </li>

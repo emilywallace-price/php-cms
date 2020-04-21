@@ -21,7 +21,8 @@
 
         $create_post_query = mysqli_query($connection, $query);
 
-        if (!$create_post_query){die('create post query FAILED');}
+        confirmSubmit($create_post_query);
+
     }
 ?>
 

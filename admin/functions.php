@@ -85,10 +85,32 @@
             echo "<td>{$post_status}</td>";
             echo "<td><img  src='../images/$post_image' class='img-responsive img-rounded' style='max-height: 100px; max-width:100px;' ></td>";
             echo "<td>
-                            <a href='' class='btn btn-danger' style='margin-bottom: 2rem;'>
+                            <a href='posts.php?delete={$post_id}' class='btn btn-danger' style='margin-bottom: 2rem;'>
                                 <i class=\"glyphicon glyphicon-remove\"></i>
                             </a>
                     </td>";
             echo '</tr>';
+
+            delete_post();
+        }
+    }
+
+    function confirmSubmit($result) {
+        global $connection;
+
+        if ( !$result ) {
+            die("QUERY FAILED". mysqli_error($connection));
+        }
+    }
+
+    function delete_post()
+    {
+        global $connection;
+        if (isset($_GET['delete'])) {
+
+            $delete_post_id = $_GET['delete'];
+            $query = "DELETE FROM posts WHERE id = {$delete_post_id}";
+            $delete_query = mysqli_query($connection, $query);
+            header("Location: posts.php");
         }
     }
