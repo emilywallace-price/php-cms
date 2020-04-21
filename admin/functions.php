@@ -73,7 +73,9 @@
             $post_image = $row['post_image'];
 
             echo '<tr>';
-            echo "<td style='font-weight: bold;'>{$post_title}</td>";
+            echo "<td style='font-weight: bold;'>
+                            <a href='posts.php?edit={$post_id}' class=''>{$post_title}</a>
+                        </td>";
             echo "<td>{$post_category}</td>";
             echo "<td>{$post_author}</td>";
             echo "<td>{$post_date}</td>";
@@ -81,16 +83,12 @@
             echo "<td>{$post_tags}</td>";
             echo "<td>{$post_comment_count}</td>";
             echo "<td>{$post_status}</td>";
-            echo "<td><img  src='../images/$post_image' class='img-responsive img-rounded' style='max-height: 100px;' ></td>";
-
-//            echo "<td>
-//                            <a href='categories.php?delete={$cat_id}' class='btn btn-danger'>
-//                                <i class=\"glyphicon glyphicon-remove\"></i>
-//                            </a>
-//                            <a href='categories.php?edit={$cat_id}' class='btn btn-warning'>
-//                                <i class=\"glyphicon glyphicon-edit\"></i>
-//                            </a>
-//                    </td>";
+            echo "<td><img  src='../images/$post_image' class='img-responsive img-rounded' style='max-height: 100px; max-width:100px;' ></td>";
+            echo "<td>
+                            <a href='' class='btn btn-danger' style='margin-bottom: 2rem;'>
+                                <i class=\"glyphicon glyphicon-remove\"></i>
+                            </a>
+                    </td>";
             echo '</tr>';
         }
     }

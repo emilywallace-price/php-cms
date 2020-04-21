@@ -13,25 +13,32 @@
                         Welcome to admin
                         <small>Author</small>
                     </h1>
-                    <div>
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Category</th>
-                                <th>Author</th>
-                                <th>Date</th>
-                                <th>Content</th>
-                                <th>Tags</th>
-                                <th>Comment Count</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php  all_posts(); ?>
-                            </tbody>
-                        </table>
+                    <div class="col-lg-12">
+                    <?php
+                    if (isset($_GET['source'])){
+                        $source = $_GET['source'];
+                    } else {
+                        $source = '';
+                    }
+                    switch ($source) {
+
+                        case 'create_post';
+                        include "includes/create_posts.php";
+                        break;
+
+                        case '35';
+                        echo "Nice work 35";
+                        break;
+
+                        case '36';
+                        echo "Nice work 36";
+                        break;
+
+                        default:
+                        include "includes/all_posts.php";
+                    }
+
+						?>
                     </div>
                 </div>
             </div>
