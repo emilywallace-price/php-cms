@@ -26,12 +26,8 @@
                         include "includes/create_posts.php";
                         break;
 
-                        case 'delete';
-                        echo "Nice work 35";
-                        break;
-
-                        case '36';
-                        echo "Nice work 36";
+                        case 'edit_post';
+                        include "includes/edit_posts.php";
                         break;
 
                         default:

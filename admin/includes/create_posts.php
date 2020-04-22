@@ -43,7 +43,7 @@
 		</div>
 		<div class="form-group">
 			<label for="post_date">Date</label>
-			<input type="datetime-local" name="post_date" class="form-control">
+			<input type="date" name="post_date" class="form-control">
 		</div>
 		<div class="form-group">
 			<label for="post_content">Content</label>
@@ -60,7 +60,7 @@
 		</div>
 		<div class="form-group">
 			<label for="post_image">Image</label>
-			<input type="file" name="post_image" />
+			<input type="file" name="post_image" class="form-control">
 		</div>
 
 		<div class="form-group">

@@ -74,7 +74,7 @@
 
             echo '<tr>';
             echo "<td style='font-weight: bold;'>
-                            <a href='posts.php?edit={$post_id}' class=''>{$post_title}</a>
+                            <a href='posts.php?source=edit_post&p_id={$post_id}' class=''>{$post_title}</a>
                         </td>";
             echo "<td>{$post_category}</td>";
             echo "<td>{$post_author}</td>";
@@ -95,7 +95,8 @@
         }
     }
 
-    function confirmSubmit($result) {
+    function confirmSubmit($result)
+    {
         global $connection;
 
         if ( !$result ) {
