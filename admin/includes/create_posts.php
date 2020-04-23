@@ -23,6 +23,7 @@
 
         confirmSubmit($create_post_query);
 
+        header("Location: posts.php"); exit;
     }
 ?>
 

@@ -62,7 +62,7 @@
 
         while ($row = mysqli_fetch_assoc($display_posts_query)) {
             $post_id = $row['id'];
-            $post_category = $row['post_category_id'];
+            $post_category_id = $row['post_category_id'];
             $post_title = $row['post_title'];
             $post_author = $row['post_author'];
             $post_date = $row['post_date'];
@@ -76,7 +76,16 @@
             echo "<td style='font-weight: bold;'>
                             <a href='posts.php?source=edit_post&p_id={$post_id}' class=''>{$post_title}</a>
                         </td>";
-            echo "<td>{$post_category}</td>";
+            $query = "SELECT * FROM categories WHERE id = {$post_category_id} ";
+            $select_categories_id = mysqli_query($connection,$query);
+
+            while($row = mysqli_fetch_assoc($select_categories_id)) {
+                $cat_id = $row['id'];
+                $cat_title = $row['cat_title'];
+                echo "<td>$cat_title</td>";
+
+            }
+//            echo "<td>{$post_category}</td>";
             echo "<td>{$post_author}</td>";
             echo "<td>{$post_date}</td>";
             echo "<td>{$post_content}</td>";
@@ -114,4 +123,13 @@
             $delete_query = mysqli_query($connection, $query);
             header("Location: posts.php");
         }
+    }
+
+    function escape($string) {
+
+        global $connection;
+
+        return mysqli_real_escape_string($connection, trim($string));
+
+
     }
