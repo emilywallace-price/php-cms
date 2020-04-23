@@ -13,7 +13,6 @@
                         Welcome to admin
                         <small>Author</small>
                     </h1>
-                    <div class="col-lg-12">
                     <?php
                     if (isset($_GET['source'])){
                         $source = $_GET['source'];
@@ -21,7 +20,6 @@
                         $source = '';
                     }
                     switch ($source) {
-
                         case 'create_post';
                         include "includes/create_posts.php";
                         break;

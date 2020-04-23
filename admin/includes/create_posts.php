@@ -15,9 +15,9 @@
         $location = "../images/";
         move_uploaded_file($post_image_temp, $location.$post_image);
 
-        $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags,post_status) ";
+        $query = "INSERT INTO posts(post_category_id,post_title, post_author, post_date,post_image,post_content,post_tags,post_status) ";
 
-        $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}') ";
+        $query .= "VALUES('{$post_category_id}','{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}') ";
 
         $create_post_query = mysqli_query($connection, $query);
 
@@ -35,8 +35,20 @@
 			<input type="text" name="post_title" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="post_date">Category</label>
-			<input type="text" name="post_category_id" class="form-control">
+			<label for="post_category_id">Category</label>
+<!--			<input type="number" name="post_category_id" class="form-control">-->
+			<select name="post_category_id" id="" class="form-control">
+                <?php
+                    $query = "SELECT * FROM categories";
+                    $select_categories = mysqli_query($connection,$query);
+
+                    while($row = mysqli_fetch_assoc($select_categories )) {
+                        $cat_id = $row['id'];
+                        $cat_title = $row['cat_title'];
+                            echo "<option value='{$cat_id}'>{$cat_title}</option>";
+                    }
+                ?>
+			</select>
 		</div>
 		<div class="form-group">
 			<label for="post_author">Author</label>
@@ -48,15 +60,14 @@
 		</div>
 		<div class="form-group">
 			<label for="post_content">Content</label>
-			<textarea name="post_content" class="form-control" id="" cols="20" rows="10">
-        </textarea>
+			<textarea name="post_content" class="form-control" id="" cols="20" rows="10"></textarea>
 		</div>
 		<div class="form-group">
-			<label for="post_date">Tags</label>
+			<label for="post_tags">Tags</label>
 			<input type="text" name="post_tags" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="post_date">Post Status</label>
+			<label for="post_status">Post Status</label>
 			<input type="text" name="post_status" class="form-control">
 		</div>
 		<div class="form-group">
