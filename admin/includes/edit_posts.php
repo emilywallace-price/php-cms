@@ -40,7 +40,7 @@
                 }
             }
 
-            $query = "UPDATE posts SET post_title = ' {$post_title} ', post_category_id = '{$post_category_id}',post_author = ' {$post_author}',post_content = ' {$post_content}', post_tags = ' {$post_tags} ', post_status = ' {$post_status} ',post_category_id = '{$post_category_id}'  WHERE id = {$the_post_id}  ";
+            $query = "UPDATE posts SET post_title = ' {$post_title} ', post_category_id = '{$post_category_id}',post_author = ' {$post_author}',post_content = ' {$post_content}', post_tags = ' {$post_tags} ', post_status = ' {$post_status} ',post_category_id = '{$post_category_id}', post_image = '{$post_image}'  WHERE id = {$the_post_id}  ";
             $update_post = mysqli_query($connection, $query);
             confirmSubmit($update_post);
             header("Location: posts.php"); exit;
