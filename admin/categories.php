@@ -14,7 +14,7 @@
 						<small>Author</small>
 					</h1>
 					<div class="col-xs-6">
-                        <?php create_category(); ?>
+                        <?php createCategory(); ?>
 						<form action="" method="post">
 							<div class="form-group">
 								<label for="cat_title">Add a Category</label>
@@ -41,8 +41,8 @@
 							</tr>
 							</thead>
 							<tbody>
-                            <?php all_categories(); ?>
-                            <?php delete_category(); ?>
+                            <?php allCategories(); ?>
+                            <?php deleteCategory(); ?>
 							</tbody>
 						</table>
 					</div>

@@ -19,7 +19,7 @@
     </tr>
     </thead>
     <tbody>
-    <?php  all_posts(); ?>
-    <?php  delete_post(); ?>
+    <?php  allPosts(); ?>
+    <?php  deletePost(); ?>
     </tbody>
 </table>

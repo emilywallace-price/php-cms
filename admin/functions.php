@@ -1,6 +1,6 @@
 <?php
 
-    function all_categories()
+    function allCategories()
     {
         global $connection;
         $query = "SELECT * fROM categories";
@@ -24,7 +24,7 @@
         }
     }
 
-    function create_category()
+    function createCategory()
     {
         global $connection;
         if (isset($_POST['submit'])) {
@@ -44,7 +44,7 @@
         }
     }
 
-    function delete_category()
+    function deleteCategory()
     {
         global $connection;
         if (isset($_GET['delete'])) {
@@ -55,7 +55,7 @@
         }
     }
 
-    function all_posts() {
+    function allPosts() {
         global $connection;
         $query = "SELECT * fROM posts";
         $display_posts_query = mysqli_query($connection, $query);
@@ -100,7 +100,7 @@
                     </td>";
             echo '</tr>';
 
-            delete_post();
+            deletePost();
         }
     }
 
@@ -113,7 +113,7 @@
         }
     }
 
-    function delete_post()
+    function deletePost()
     {
         global $connection;
         if (isset($_GET['delete'])) {
@@ -132,4 +132,46 @@
         return mysqli_real_escape_string($connection, trim($string));
 
 
+    }
+
+    function allComments() {
+        global $connection;
+        $query = "SELECT * fROM comments";
+        $display_comments_query = mysqli_query($connection, $query);
+
+        while ($row = mysqli_fetch_assoc($display_comments_query)) {
+            $comment_id = $row['id'];
+            $comment_post_id = $row['comment_post_id'];
+            $comment_author = $row['comment_author'];
+            $comment_date = $row['comment_date'];
+            $comment_content = $row['comment_content'];
+            $comment_status = $row['comment_status'];
+
+            echo '<tr>';
+            echo "<td>{$comment_post_id}</td>";
+            echo "<td>{$comment_author}</td>";
+            echo "<td>{$comment_date}</td>";
+            echo "<td>{$comment_content}</td>";
+            echo "<td>{$comment_status}</td>";
+            echo "<td>
+                            <a href='posts.php?delete={$comment_id}' class='btn btn-danger' style='margin-bottom: 2rem;'>
+                                <i class=\"glyphicon glyphicon-remove\"></i>
+                            </a>
+                    </td>";
+            echo '</tr>';
+
+            deleteComment();
+        }
+    }
+
+    function deleteComment()
+    {
+        global $connection;
+        if (isset($_GET['delete'])) {
+
+            $delete_comment_id = $_GET['delete'];
+            $query = "DELETE FROM comments WHERE id = {$delete_comment_id}";
+            $delete_query = mysqli_query($connection, $query);
+            header("Location: comments.php");
+        }
     }
