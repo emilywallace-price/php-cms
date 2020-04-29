@@ -55,7 +55,8 @@
         }
     }
 
-    function allPosts() {
+    function allPosts()
+    {
         global $connection;
         $query = "SELECT * fROM posts";
         $display_posts_query = mysqli_query($connection, $query);
@@ -77,9 +78,9 @@
                             <a href='posts.php?source=edit_post&p_id={$post_id}' class=''>{$post_title}</a>
                         </td>";
             $query = "SELECT * FROM categories WHERE id = {$post_category_id} ";
-            $select_categories_id = mysqli_query($connection,$query);
+            $select_categories_id = mysqli_query($connection, $query);
 
-            while($row = mysqli_fetch_assoc($select_categories_id)) {
+            while ($row = mysqli_fetch_assoc($select_categories_id)) {
                 $cat_id = $row['id'];
                 $cat_title = $row['cat_title'];
                 echo "<td>$cat_title</td>";
@@ -107,9 +108,8 @@
     function confirmSubmit($result)
     {
         global $connection;
-
-        if ( !$result ) {
-            die("QUERY FAILED". mysqli_error($connection));
+        if (!$result) {
+            die("QUERY FAILED" . mysqli_error($connection));
         }
     }
 
@@ -117,7 +117,6 @@
     {
         global $connection;
         if (isset($_GET['delete'])) {
-
             $delete_post_id = $_GET['delete'];
             $query = "DELETE FROM posts WHERE id = {$delete_post_id}";
             $delete_query = mysqli_query($connection, $query);
@@ -125,13 +124,10 @@
         }
     }
 
-    function escape($string) {
-
+    function escape($string)
+    {
         global $connection;
-
         return mysqli_real_escape_string($connection, trim($string));
-
-
     }
 
     function allComments()
@@ -150,37 +146,36 @@
             $comment_status = $row['comment_status'];
 
             echo '<tr>';
-                $query = "SELECT * FROM posts WHERE id = $comment_post_id ";
-            $comment_post_id = mysqli_query($connection,$query);
-            while($row = mysqli_fetch_assoc($comment_post_id)) {
+            $query = "SELECT * FROM posts WHERE id = $comment_post_id ";
+            $comment_post_id = mysqli_query($connection, $query);
+            while ($row = mysqli_fetch_assoc($comment_post_id)) {
                 $post_id = $row['id'];
                 $post_title = $row['post_title'];
                 echo "<td><a href='../post.php?p_id=$post_id'>$post_title</td>";
-            echo "<td>{$comment_author}</td>";
-            echo "<td>{$comment_email}</td>";
-            echo "<td>{$comment_date}</td>";
-            echo "<td>{$comment_content}</td>";
-            echo "<td>{$comment_status}</td>";
-            echo "<td></td>";
-            echo "<td>
-                            <a href='' class='btn btn-success' style='margin: 10px;'>
+                echo "<td>{$comment_author}</td>";
+                echo "<td>{$comment_email}</td>";
+                echo "<td>{$comment_date}</td>";
+                echo "<td>{$comment_content}</td>";
+                echo "<td>{$comment_status}</td>";
+                echo "<td></td>";
+                echo "<td>
+                            <a href='comments.php?approve={$comment_id}' class='btn btn-success' style='margin: 10px;'>
                                 <i class=\"glyphicon glyphicon-ok\"></i>
                             </a>
                     </td>";
-            echo "<td>
-                            <a href='' class='btn btn-warning' style='margin: 10px; '>
+                echo "<td>
+                            <a href='comments.php?unapprove={$comment_id}' class='btn btn-warning' style='margin: 10px; '>
                                 <i class=\"glyphicon glyphicon-remove\"></i>
                             </a>
                     </td>";
-            echo "<td> 
+                echo "<td> 
                             <a href='comments.php?delete={$comment_id}' class='btn btn-danger' style='margin: 10px;'>
                                 <i class=\"glyphicon glyphicon-trash\"></i>
                             </a>
                     </td>";
-            echo '</tr>';
-
+                echo '</tr>';
+            }
         }
-    }
 
         function deleteComment()
         {
@@ -190,6 +185,30 @@
                 $delete_comment_id = $_GET['delete'];
                 $query = "DELETE FROM comments WHERE id = {$delete_comment_id}";
                 $delete_query = mysqli_query($connection, $query);
+                header("Location: comments.php");
+            }
+        }
+
+        function unapproveComment()
+        {
+            global $connection;
+            if (isset($_GET['unapprove'])) {
+
+                $unapprove_comment_id = $_GET['unapprove'];
+                $query = "UPDATE comments SET comment_status = 'unapprove' WHERE id = $unapprove_comment_id";
+                $unapprove_query = mysqli_query($connection, $query);
+                header("Location: comments.php");
+            }
+        }
+
+        function approveComment()
+        {
+            global $connection;
+            if (isset($_GET['approve'])) {
+
+                $approve_comment_id = $_GET['approve'];
+                $query = "UPDATE comments SET comment_status = 'approve' WHERE id = $approve_comment_id";
+                $approve_query = mysqli_query($connection, $query);
                 header("Location: comments.php");
             }
         }

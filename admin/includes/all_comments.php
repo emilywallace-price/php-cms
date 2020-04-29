@@ -16,5 +16,7 @@
     <tbody>
     <?php  allComments(); ?>
     <?php  deleteComment(); ?>
-    </tbody>
+    <?php  unapproveComment(); ?>
+    <?php  approveComment(); ?>
+	</tbody>
 </table>
