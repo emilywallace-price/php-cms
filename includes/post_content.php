@@ -31,5 +31,5 @@
         <hr>
     <?php }  ?>
 
-	<?php include "comments.php" ?>;
+	<?php include "comments.php" ?>
 </div>
