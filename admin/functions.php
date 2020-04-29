@@ -150,13 +150,12 @@
             $comment_status = $row['comment_status'];
 
             echo '<tr>';
-                $query = "SELECT * FROM posts WHERE id = {$comment_post_id} ";
+                $query = "SELECT * FROM posts WHERE id = $comment_post_id ";
             $comment_post_id = mysqli_query($connection,$query);
-
             while($row = mysqli_fetch_assoc($comment_post_id)) {
                 $post_id = $row['id'];
                 $post_title = $row['post_title'];
-                echo "<td>$post_title</td>";
+                echo "<td><a href='../post.php?p_id=$post_id'>$post_title</td>";
             echo "<td>{$comment_author}</td>";
             echo "<td>{$comment_email}</td>";
             echo "<td>{$comment_date}</td>";
