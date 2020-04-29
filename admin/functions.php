@@ -134,7 +134,8 @@
 
     }
 
-    function allComments() {
+    function allComments()
+    {
         global $connection;
         $query = "SELECT * fROM comments";
         $display_comments_query = mysqli_query($connection, $query);
@@ -144,34 +145,53 @@
             $comment_post_id = $row['comment_post_id'];
             $comment_author = $row['comment_author'];
             $comment_date = $row['comment_date'];
+            $comment_email = $row['comment_email'];
             $comment_content = $row['comment_content'];
             $comment_status = $row['comment_status'];
 
             echo '<tr>';
-            echo "<td>{$comment_post_id}</td>";
+                $query = "SELECT * FROM posts WHERE id = {$comment_post_id} ";
+            $comment_post_id = mysqli_query($connection,$query);
+
+            while($row = mysqli_fetch_assoc($comment_post_id)) {
+                $post_id = $row['id'];
+                $post_title = $row['post_title'];
+                echo "<td>$post_title</td>";
             echo "<td>{$comment_author}</td>";
+            echo "<td>{$comment_email}</td>";
             echo "<td>{$comment_date}</td>";
             echo "<td>{$comment_content}</td>";
             echo "<td>{$comment_status}</td>";
+            echo "<td></td>";
             echo "<td>
-                            <a href='posts.php?delete={$comment_id}' class='btn btn-danger' style='margin-bottom: 2rem;'>
+                            <a href='' class='btn btn-success' style='margin: 10px;'>
+                                <i class=\"glyphicon glyphicon-ok\"></i>
+                            </a>
+                    </td>";
+            echo "<td>
+                            <a href='' class='btn btn-warning' style='margin: 10px; '>
                                 <i class=\"glyphicon glyphicon-remove\"></i>
+                            </a>
+                    </td>";
+            echo "<td> 
+                            <a href='comments.php?delete={$comment_id}' class='btn btn-danger' style='margin: 10px;'>
+                                <i class=\"glyphicon glyphicon-trash\"></i>
                             </a>
                     </td>";
             echo '</tr>';
 
-            deleteComment();
         }
     }
 
-    function deleteComment()
-    {
-        global $connection;
-        if (isset($_GET['delete'])) {
+        function deleteComment()
+        {
+            global $connection;
+            if (isset($_GET['delete'])) {
 
-            $delete_comment_id = $_GET['delete'];
-            $query = "DELETE FROM comments WHERE id = {$delete_comment_id}";
-            $delete_query = mysqli_query($connection, $query);
-            header("Location: comments.php");
+                $delete_comment_id = $_GET['delete'];
+                $query = "DELETE FROM comments WHERE id = {$delete_comment_id}";
+                $delete_query = mysqli_query($connection, $query);
+                header("Location: comments.php");
+            }
         }
     }
