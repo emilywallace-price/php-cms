@@ -8,7 +8,7 @@
         $post_tags = $_POST['post_tags'];
         $post_content = $_POST['post_content'];
         $post_status = $_POST['post_status'];
-        $post_comment_count = 4;
+//        $post_comment_count = 4;
 
         $post_image =  $_FILES['post_image'] ['name'];
         $post_image_temp = $_FILES['post_image'] ['tmp_name'];

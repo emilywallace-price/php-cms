@@ -12,6 +12,11 @@
         if (!$create_comment_query) {
 			die('QUERY FAILED' . mysqli_error($connection));
         }
+        $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 WHERE id = $the_post_id ";
+        $increment_comment_query = mysqli_query($connection, $query);
+        if (!$increment_comment_query) {
+            die('QUERY FAILED' . mysqli_error($connection));
+        }
     }
 ?>
 

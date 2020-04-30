@@ -86,7 +86,6 @@
                 echo "<td>$cat_title</td>";
 
             }
-//            echo "<td>{$post_category}</td>";
             echo "<td>{$post_author}</td>";
             echo "<td>{$post_date}</td>";
             echo "<td>{$post_content}</td>";
