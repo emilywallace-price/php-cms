@@ -45,13 +45,15 @@
 		</div>
 		<div class="form-group">
 			<label for="user_role">Role</label>
-			<input type="text" name="user_role" class="form-control">
+			<select name="user_role" class="form-control">
+				<option value="subcriber">Subscriber</option>
+				<option value="admin">Admin</option>
+			</select>
 		</div>
 		<div class="form-group">
 			<label for="user_image">Image</label>
 			<input type="file" name="user_image" class="form-control">
 		</div>
-
 		<div class="form-group">
 			<input type="submit" class="btn btn-primary" name="create_user" value="Add User">
 		</div>

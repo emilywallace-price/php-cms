@@ -62,7 +62,10 @@
         </div>
         <div class="form-group">
             <label for="user_role">Role</label>
-            <input type="text" name="user_role" class="form-control" value="<?php echo $user_role ?>">
+			<select name="user_role" value="user_role" class="form-control">
+				<option value="subcriber">Subscriber</option>
+				<option value="admin">Admin</option>
+			</select>
         </div>
         <div class="form-group">
             <label for="user_image">Image</label>

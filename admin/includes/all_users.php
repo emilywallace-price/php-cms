@@ -39,7 +39,7 @@
                             </a>
                     </td>";
             echo "<td>
-                            <a href='users.php?author={$user_id}' class='btn btn-warning' style='margin-bottom: 2rem;'>
+                            <a href='users.php?subcriber={$user_id}' class='btn btn-warning' style='margin-bottom: 2rem;'>
                                 <i class=\"glyphicon glyphicon-ok\"></i>
                             </a>
                     </td>";
@@ -49,11 +49,8 @@
                             </a>
                     </td>";
             echo '</tr>';
-
         }
-
         if (isset($_GET['delete'])) {
-
             $delete_user_id = $_GET['delete'];
             $query = "DELETE FROM users WHERE id = {$delete_user_id}";
             $delete_query = mysqli_query($connection, $query);
@@ -68,10 +65,10 @@
             header("Location: users.php");
         }
 
-        if (isset($_GET['author'])) {
+        if (isset($_GET['subcriber'])) {
 
-            $make_author_id = $_GET['author'];
-            $query = "UPDATE users SET user_role = 'author' WHERE id = $make_author_id";
+            $make_author_id = $_GET['subcriber'];
+            $query = "UPDATE users SET user_role = 'subcriber' WHERE id = $make_author_id";
             $author_query = mysqli_query($connection, $query);
             header("Location: users.php");
         }
