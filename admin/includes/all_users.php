@@ -32,7 +32,7 @@
             echo "<td>{$user_role}</td>";
             echo "<td><img  src='../images/$user_image' class='img-responsive img-rounded' style='max-height: 100px; max-width:100px;' ></td>";
             echo "<td>
-                            <a href='posts.php?delete={$user_id}' class='btn btn-danger' style='margin-bottom: 2rem;'>
+                            <a href='users.php?delete={$user_id}' class='btn btn-danger' style='margin-bottom: 2rem;'>
                                 <i class=\"glyphicon glyphicon-remove\"></i>
                             </a>
                     </td>";
@@ -40,6 +40,14 @@
 
         }
     ?>
-<!--    --><?php // deleteUser(); ?>
+    <?php
+        if (isset($_GET['delete'])) {
+
+            $delete_user_id = $_GET['delete'];
+            $query = "DELETE FROM users WHERE id = {$delete_user_id}";
+            $delete_query = mysqli_query($connection, $query);
+            header("Location: users.php");
+        }
+    ?>
     </tbody>
 </table>
