@@ -7,7 +7,6 @@
 		<th>Date</th>
 		<th>Comment</th>
 		<th>Status</th>
-		<th>In Response too</th>
 		<th>Approve</th>
 		<th>Un-approve</th>
 		<th>Delete</th>

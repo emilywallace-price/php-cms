@@ -70,7 +70,6 @@
             $post_content = $row['post_content'];
             $post_tags = $row['post_tags'];
             $post_comment_count = $row['post_comment_count'];
-            $post_status = $row['post_status'];
             $post_image = $row['post_image'];
 
             echo '<tr>';
@@ -91,7 +90,6 @@
             echo "<td>{$post_content}</td>";
             echo "<td>{$post_tags}</td>";
             echo "<td>{$post_comment_count}</td>";
-            echo "<td>{$post_status}</td>";
             echo "<td><img  src='../images/$post_image' class='img-responsive img-rounded' style='max-height: 100px; max-width:100px;' ></td>";
             echo "<td>
                             <a href='posts.php?delete={$post_id}' class='btn btn-danger' style='margin-bottom: 2rem;'>
@@ -156,7 +154,6 @@
                 echo "<td>{$comment_date}</td>";
                 echo "<td>{$comment_content}</td>";
                 echo "<td>{$comment_status}</td>";
-                echo "<td></td>";
                 echo "<td>
                             <a href='comments.php?approve={$comment_id}' class='btn btn-success' style='margin: 10px;'>
                                 <i class=\"glyphicon glyphicon-ok\"></i>

@@ -13,7 +13,6 @@
         <th>Content</th>
         <th>Tags</th>
         <th>Comment Count</th>
-        <th>Status</th>
         <th>Image</th>
         <th>Actions</th>
     </tr>
