@@ -14,7 +14,7 @@
                         Welcome to Admin
                         <small><?php echo $_SESSION['username'] ?></small>
                     </h1>
-					<div class="row">
+					<div class="row" style="margin-bottom: 50px;">
 						<div class="col-lg-3 col-md-6">
 							<div class="panel panel-primary">
 								<div class="panel-heading">
@@ -23,18 +23,12 @@
 											<i class="fa fa-file-text fa-5x"></i>
 										</div>
 										<div class="col-xs-9 text-right">
-
                                             <?php
-
                                                 $query = "SELECT * FROM posts";
                                                 $select_all_post = mysqli_query($connection,$query);
                                                 $post_count = mysqli_num_rows($select_all_post);
-
                                                 echo  "<div class='huge'>{$post_count}</div>"
-
                                             ?>
-
-
 											<div>Posts</div>
 										</div>
 									</div>
@@ -130,6 +124,37 @@
 							</div>
 						</div>
 					</div>
+						<script type="text/javascript">
+							google.charts.load('current', {'packages':['bar']});
+                            google.charts.setOnLoadCallback(drawChart);
+
+                            function drawChart() {
+                                var data = google.visualization.arrayToDataTable([
+                                    ['Data', 'Count'],
+                                    <?php
+										$element_text = ['Published Posts', 'Comments', 'Users', 'Categories'];
+                                    	$element_count = [$post_count, $comment_count, $user_count, $category_count];
+
+                                    for($i =0;$i < 4; $i++) {
+                                        echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
+                                    }
+                                    ?>
+                                ]);
+
+                                var options = {
+                                    chart: {
+                                        title: '',
+                                        subtitle: '',
+                                    }
+                                };
+
+                                var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                                chart.draw(data, google.charts.Bar.convertOptions(options));
+                            }
+						</script>
+
+						<div id="columnchart_material" style="width: auto; height: 500px;"></div>
                     </div>
                 </div>
             </div>
