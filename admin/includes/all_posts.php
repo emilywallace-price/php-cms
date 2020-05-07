@@ -1,8 +1,4 @@
-<a href="posts.php?source=create_post"
-     class="btn btn-success"
-     style="margin-bottom: 1rem;">
-        Create post
-</a>
+
 <table class="table table-bordered table-hover">
     <thead>
     <tr>

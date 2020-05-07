@@ -1,11 +1,8 @@
 <?php include "includes/admin_header.php" ?>
 
 <body>
-
 <div id="wrapper">
-
     <?php include "includes/nav.php"; ?>
-
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -23,9 +20,6 @@
     </div>
 
     <script src="js/jquery.js"></script>
-
     <script src="js/bootstrap.min.js"></script>
-
     </body>
 
-    </html>
