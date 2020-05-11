@@ -37,7 +37,8 @@
             $query = "UPDATE users SET username = ' {$username} ', user_firstname = '{$user_firstname}',user_lastname = ' {$user_lastname}',user_email = ' {$user_email}', user_role = ' {$user_role} ', user_image = '{$user_image}'  WHERE id = {$the_user_id}  ";
             $update_post = mysqli_query($connection, $query);
             confirmSubmit($update_post);
-            header("Location: users.php"); exit;
+            echo "<div class=\"alert alert-info\" role=\"alert\"> $username's has been updated successful</div>";
+
         }
     }
     ?>
