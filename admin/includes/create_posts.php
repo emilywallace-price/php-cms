@@ -60,7 +60,7 @@
 		</div>
 		<div class="form-group">
 			<label for="post_content">Content</label>
-			<textarea name="post_content" class="form-control" id="body"></textarea>
+			<textarea name="post_content" class="form-control" id="editor"></textarea>
 		</div>
 		<div class="form-group">
 			<label for="post_tags">Tags</label>
@@ -82,7 +82,7 @@
 </form>
 <script>
     ClassicEditor
-        .create( document.querySelector( '#body' ) )
+        .create( document.querySelector( '#editor' ) )
         .catch( error => {
             console.error( error );
         } );

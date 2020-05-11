@@ -24,8 +24,8 @@ if (isset($_POST['login'])) {
     }
     if ($username !== $login_username && $password !== $login_user_password) {
         header("Location: ../index.php");
-    } elseif ($username == $login_username && $password == $login_user_password) {
-//        if (session_status() == PHP_SESSION_NONE) session_start();
+    } elseif ($username === $login_username && $password === $login_user_password) {
+        if (session_status() == PHP_SESSION_NONE) session_start();
         $_SESSION['username'] = $login_username;
         $_SESSION['user_firstname'] = $login_user_firstname;
         $_SESSION['user_lastname'] = $login_user_lastname;

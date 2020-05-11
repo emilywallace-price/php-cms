@@ -1,3 +1,4 @@
+<?php include 'header.php' ?>;
 <?php
     if (isset($_POST['create_comment'])) {
         $the_post_id = $_GET['p_id'];
@@ -33,14 +34,20 @@
         </div>
         <div class="form-group">
             <label for="comment">Your Comment</label>
-            <textarea name="comment_content" class="form-control" rows="3"></textarea>
+            <textarea name="comment_content" id="editor" class="form-control" rows="3"></textarea>
         </div>
         <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
     </form>
 </div>
 
 <hr>
-
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 <?php
     $the_post_id = $_GET['p_id'];
 

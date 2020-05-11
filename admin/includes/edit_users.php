@@ -46,19 +46,19 @@
     <div class="col-md-8">
         <div class="form-group ">
             <label for="post_title">Username</label>
-            <input type="text" name="username" class="form-control" value="<?php echo $username ?>">
+            <input type="text" name="username" class="form-control" value="<?php echo trim($username); ?>">
         </div>
         <div class="form-group">
             <label for="user_firstname">Firstname</label>
-            <input type="text" name="user_firstname" class="form-control" value="<?php echo $user_firstname ?>">
+            <input type="text" name="user_firstname" class="form-control" value="<?php echo trim($user_firstname); ?>">
         </div>
         <div class="form-group">
             <label for="user_lastname">Lastname</label>
-            <input type="text" name="user_lastname" class="form-control" value="<?php echo $user_lastname ?>">
+            <input type="text" name="user_lastname" class="form-control" value="<?php echo trim($user_lastname); ?>">
         </div>
         <div class="form-group">
             <label for="user_email">Email</label>
-            <textarea name="user_email" class="form-control"><?php echo $user_email ?></textarea>
+            <textarea name="user_email" class="form-control"><?php echo trim($user_email) ?></textarea>
         </div>
         <div class="form-group">
             <label for="user_role">Role</label>

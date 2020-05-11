@@ -53,7 +53,7 @@
     <div class="col-md-8">
         <div class="form-group ">
             <label for="post_title">Post Title</label>
-            <input type="text" name="post_title" class="form-control" value="<?php echo $post_title ?>">
+            <input type="text" name="post_title" class="form-control" value="<?php echo trim($post_title); ?>">
         </div>
         <div class="form-group">
             <label for="post_date">Category</label>
@@ -78,7 +78,7 @@
         </div>
         <div class="form-group">
             <label for="post_author">Author</label>
-            <input type="text" name="post_author" class="form-control" value="<?php echo $post_author ?>">
+            <input type="text" name="post_author" class="form-control" value="<?php echo trim($post_author); ?>">
         </div>
         <div class="form-group">
             <label for="post_date">Date</label>
@@ -86,16 +86,16 @@
         </div>
         <div class="form-group">
             <label for="post_content">Content</label>
-            <textarea name="post_content" class="form-control"><?php echo $post_content ?></textarea>
+            <textarea name="post_content" id="editor" class="form-control"><?php echo trim($post_content); ?></textarea>
 
         </div>
         <div class="form-group">
             <label for="post_date">Tags</label>
-            <input type="text" name="post_tags" class="form-control" value="<?php echo $post_tags ?>">
+            <input type="text" name="post_tags" class="form-control" value="<?php echo trim($post_tags); ?>">
         </div>
         <div class="form-group">
             <label for="post_date">Post Status</label>
-            <input type="text" name="post_status" class="form-control" value="<?php echo $post_status ?>">
+            <input type="text" name="post_status" class="form-control" value="<?php echo trim($post_status); ?>">
         </div>
         <div class="form-group">
             <label for="post_image">Image</label>
@@ -112,3 +112,10 @@
         </div>
     </div>
 </form>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
