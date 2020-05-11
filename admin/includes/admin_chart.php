@@ -6,9 +6,12 @@
         var data = google.visualization.arrayToDataTable([
             ['Data', 'Count'],
             <?php
+            // The name of each column
             $element_text = ['Published Posts', 'Comments', 'Users', 'Categories'];
+            // The values of each column from the admin widgets
             $element_count = [$post_count, $comment_count, $user_count, $category_count];
 
+            // Use a loop to go through all the $element_text and $element_count while there is less than 4 $element_text
             for($i =0;$i < 4; $i++) {
                 echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
             }

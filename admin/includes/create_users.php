@@ -1,27 +1,5 @@
 <?php
-    if (isset($_POST['create_user'])) {
-
-        $username = $_POST['username'];
-        $user_firstname = $_POST['user_firstname'];
-        $user_lastname = $_POST['user_lastname'];
-        $user_email = $_POST['user_email'];
-        $user_role = $_POST['user_role'];
-
-        $user_image =  $_FILES['user_image'] ['name'];
-        $user_image_temp = $_FILES['user_image'] ['tmp_name'];
-        $location = "../images/";
-        move_uploaded_file($user_image_temp, $location.$user_image);
-
-        $query = "INSERT INTO users(username, user_firstname, user_lastname,user_email,user_role,user_image) ";
-
-        $query .= "VALUES('{$username}','{$user_firstname}','{$user_lastname}','{$user_email}','{$user_role}','{$user_image}') ";
-
-        $create_user_query = mysqli_query($connection, $query);
-
-        confirmSubmit($create_user_query);
-
-        header("Location: users.php"); exit;
-    }
+createUser();
 ?>
 
 
@@ -53,6 +31,10 @@
 		<div class="form-group">
 			<label for="user_image">Image</label>
 			<input type="file" name="user_image" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="post_content">Password</label>
+			<input type="password" name="user_password" class="form-control">
 		</div>
 		<div class="form-group">
 			<input type="submit" class="btn btn-primary" name="create_user" value="Add User">

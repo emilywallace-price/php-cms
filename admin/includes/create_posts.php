@@ -60,7 +60,7 @@
 		</div>
 		<div class="form-group">
 			<label for="post_content">Content</label>
-			<textarea name="post_content" class="form-control" id="" cols="20" rows="10"></textarea>
+			<textarea name="post_content" class="form-control" id="body"></textarea>
 		</div>
 		<div class="form-group">
 			<label for="post_tags">Tags</label>
@@ -80,3 +80,10 @@
 		</div>
 	</div>
 </form>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#body' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

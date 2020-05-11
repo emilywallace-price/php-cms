@@ -1,5 +1,31 @@
 <?php
 
+    function createUser()
+    {
+        global $connection;
+        if (isset($_POST['create_user'])) {
+            $username = $_POST['username'];
+            $user_firstname = $_POST['user_firstname'];
+            $user_lastname = $_POST['user_lastname'];
+            $user_email = $_POST['user_email'];
+            $user_role = $_POST['user_role'];
+            $user_password = $_POST['user_password'];
+            $user_image =  $_FILES['user_image'] ['name'];
+            $user_image_temp = $_FILES['user_image'] ['tmp_name'];
+            $location = "../images/";
+            move_uploaded_file($user_image_temp, $location.$user_image);
+
+            $query = "INSERT INTO users(username, user_firstname, user_lastname,user_email,user_role,user_image, user_password) ";
+
+            $query .= "VALUES('{$username}','{$user_firstname}','{$user_lastname}','{$user_email}','{$user_role}','{$user_image}', '{$user_password}') ";
+
+            $create_user_query = mysqli_query($connection, $query);
+
+            confirmSubmit($create_user_query);
+            echo "<div class=\"alert alert-success\" role=\"alert\">User has been created <a href='users.php'>view all users</a> </div>";
+        }
+    }
+
     function allUsers()
     {
         global $connection;
@@ -22,7 +48,7 @@
             echo "<td>{$user_firstname} {$user_lastname}</td>";
             echo "<td>{$user_email}</td>";
             echo "<td>{$user_role}</td>";
-            echo "<td><img  src='../images/$user_image' class='img-responsive img-rounded' style='max-height: 100px; max-width:100px;' ></td>";
+            echo "<td><img  src='../images/$user_image' class='img-responsive img-rounded' style='max-height: 80px; max-width:100px;' ></td>";
             echo "<td>
                     <a href='users.php?admin={$user_id}' class='btn btn-success' style='margin-bottom: 2rem;'>
                         <i class=\"glyphicon glyphicon-ok\"></i>
@@ -50,7 +76,7 @@
                     $query = "UPDATE users SET user_role = 'admin' WHERE id = $make_admin_id";
                     $admin_query = mysqli_query($connection, $query);
                     header("Location: users.php");
-                }
+        }
     }
 
     function isSubscriber()
@@ -61,7 +87,7 @@
                     $query = "UPDATE users SET user_role = 'subcriber' WHERE id = $make_author_id";
                     $author_query = mysqli_query($connection, $query);
                     header("Location: users.php");
-                }
+        }
     }
 
     function deleteUser()
@@ -71,7 +97,7 @@
             $delete_user_id = $_GET['delete'];
             $query = "DELETE FROM users WHERE id = {$delete_user_id}";
             $delete_query = mysqli_query($connection, $query);
-            header("Location:users.php");
+            header("Location: users.php");
         }
     }
     function allCategories()
