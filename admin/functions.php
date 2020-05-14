@@ -43,7 +43,7 @@
 
             echo '<tr>';
             echo "<td style='font-weight: bold;'>
-                    <a href='users.php?source=edit_user&u_id={$user_id}' class=''>{$username}</a>
+                    {$username}
                 </td>";
             echo "<td>{$user_firstname} {$user_lastname}</td>";
             echo "<td>{$user_email}</td>";
@@ -100,6 +100,7 @@
             header("Location: users.php");
         }
     }
+
     function allCategories()
     {
         global $connection;

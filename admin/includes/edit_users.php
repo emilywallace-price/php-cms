@@ -13,33 +13,6 @@
             $user_role = $row['user_role'];
             $user_image = $row['user_image'];
         }
-
-        if (isset($_POST['update_user'])) {
-        	$username = $_POST['username'];
-            $user_firstname = $_POST['user_firstname'];
-            $user_lastname = $_POST['user_lastname'];
-            $user_email = $_POST['user_email'];
-            $user_role = $_POST['user_role'];
-
-            $user_image =  $_FILES['user_image'] ['name'];
-            $user_image_temp = $_FILES['user_image'] ['tmp_name'];
-            $location = "../images/";
-            move_uploaded_file($user_image_temp, $location.$user_image);
-
-            if(empty($user_image)) {
-                $query = "SELECT * FROM users WHERE id = $the_user_id ";
-                $select_image = mysqli_query($connection,$query);
-
-                while($row = mysqli_fetch_array($select_image)) {
-                    $user_image = $row['user_image'];
-                }
-            }
-            $query = "UPDATE users SET username = ' {$username} ', user_firstname = '{$user_firstname}',user_lastname = ' {$user_lastname}',user_email = ' {$user_email}', user_role = ' {$user_role} ', user_image = '{$user_image}'  WHERE id = {$the_user_id}  ";
-            $update_post = mysqli_query($connection, $query);
-            confirmSubmit($update_post);
-            echo "<div class=\"alert alert-info\" role=\"alert\"> $username's has been updated successful</div>";
-
-        }
     }
     ?>
 <form action="" method="post" enctype="multipart/form-data">
