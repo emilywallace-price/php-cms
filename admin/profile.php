@@ -4,7 +4,7 @@
     <?php
         if(isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
-            $query = "SELECT * FROM users WHERE username = '".$_SESSION['username']."' ";
+            $query = "SELECT * FROM users WHERE username = '{$username}' ";
             $select_user_profile = mysqli_query($connection, $query);
             while ($row = mysqli_fetch_array($select_user_profile)) {
                 $user_id = $row['id'];
