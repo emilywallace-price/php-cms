@@ -22,8 +22,9 @@
             $login_user_lastname = $row['user_lastname'];
             $login_user_role = $row['user_role'];
             $login_user_image = $row['user_image'];
-
         }
+        $password = crypt($password, $login_user_password);
+
         if ($username !== $login_username && $password !== $login_user_password) {
             header("Location: ../index.php");
         } elseif ($username == $login_username && $password == $login_user_password) {

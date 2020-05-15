@@ -60,7 +60,7 @@
                     </a>
             </td>";
             echo "<td>
-                    <a href='users.php?delete={$user_id}' class='btn btn-danger' style='margin-bottom: 2rem;'>
+                    <a href='users.php?delete={$user_id}' class='btn btn-danger' style='margin-bottom: 2rem;' onclick=\" javascript: return confirm('Are you sure you want to delete?');  \">
                         <i class=\"glyphicon glyphicon-remove\"></i>
                     </a>
             </td>";
@@ -114,7 +114,7 @@
             echo "<td>{$cat_id}</td>";
             echo "<td style='font-weight: bold;'>{$cat_title}</td>";
             echo "<td>
-                            <a href='categories.php?delete={$cat_id}' class='btn btn-danger'>
+                            <a href='categories.php?delete={$cat_id}' class='btn btn-danger' onclick=\" javascript: return confirm('Are you sure you want to delete?');  \">
                                 <i class=\"glyphicon glyphicon-remove\"></i>
                             </a>
                             <a href='categories.php?edit={$cat_id}' class='btn btn-warning'>
@@ -193,7 +193,7 @@
             echo "<td>{$post_comment_count}</td>";
             echo "<td><img  src='../images/$post_image' class='img-responsive img-rounded' style='max-height: 100px; max-width:100px;' ></td>";
             echo "<td>
-                            <a href='posts.php?delete={$post_id}' class='btn btn-danger' style='margin-bottom: 2rem;'>
+                            <a href='posts.php?delete={$post_id}' class='btn btn-danger' style='margin-bottom: 2rem;' onClick=\" javascript: return confirm('Are you sure you want to delete?');  \">
                                 <i class=\"glyphicon glyphicon-remove\"></i>
                             </a>
                     </td>";
@@ -260,7 +260,7 @@
                             </a>
                     </td>";
                 echo "<td> 
-                            <a href='comments.php?delete={$comment_id}' class='btn btn-danger' style='margin: 10px;'>
+                            <a href='comments.php?delete={$comment_id}' class='btn btn-danger' style='margin: 10px;' onclick=\" javascript: return confirm('Are you sure you want to delete?');  \">
                                 <i class=\"glyphicon glyphicon-trash\"></i>
                             </a>
                     </td>";

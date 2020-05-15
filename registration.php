@@ -7,26 +7,36 @@
         $user_email = $_POST['user_email'];
         $user_password = $_POST['user_password'];
 
-        $username = mysqli_real_escape_string($connection, $username);
-        $user_email = mysqli_real_escape_string($connection, $user_email);
-        $user_password = mysqli_real_escape_string($connection, $user_password);
+        if (!empty($username) && !empty($user_email) && !empty($user_password)) {
+            $username = mysqli_real_escape_string($connection, $username);
+            $user_email = mysqli_real_escape_string($connection, $user_email);
+            $user_password = mysqli_real_escape_string($connection, $user_password);
 
-        $query = "SELECT randSalt FROM users";
-        $select_randSalt = mysqli_query($connection, $query);
-        if (!$select_randSalt) {
-            die('Query Failed' . mysqli_error($connection));
-        }
+            $query = "SELECT randSalt FROM users";
+            $select_randSalt = mysqli_query($connection, $query);
+            if (!$select_randSalt) {
+                die('Query Failed' . mysqli_error($connection));
+            }
 
-        $row = mysqli_fetch_array($select_randSalt);
-        $salt = $row['randSalt'];
+            $row = mysqli_fetch_array($select_randSalt);
+            $salt = $row['randSalt'];
+            $user_password = crypt($user_password, $salt);
 
-        $query = "INSERT INTO users(username, user_email, user_password ) ";
-        $query .= "VALUES('{$username}','{$user_email}', '{$user_password}' ) ";
-        $register_user_query = mysqli_query($connection, $query);
-        if (!$register_user_query) {
-            die('Query Failed' . mysqli_error($connection));
-        }
-    }
+            $query = "INSERT INTO users(username, user_email, user_password ) ";
+            $query .= "VALUES('{$username}','{$user_email}', '{$user_password}' ) ";
+            $register_user_query = mysqli_query($connection, $query);
+            if (!$register_user_query) {
+                die('Query Failed' . mysqli_error($connection));
+            }
+            $message = "<div class=\"alert alert-info\" role=\"alert\">Your registration has been submitted, please try to <a href='includes/login.php' class=\"alert-link\">log in</a>. 
+									<br>
+									<b>Be aware your account needs to be authorised before you can log in</b> </div>";
+        }else{
+        	$message = "<div class=\"alert alert-danger\" role=\"alert\">All fiends must be completed</div>";
+		}
+    }else{
+    	$message = '';
+	}
 ?>
 <div class="container">
 	<section id="login">
@@ -36,6 +46,9 @@
 					<div class="form-wrap">
 						<h1>Register</h1>
 						<form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
+							<div>
+                                <?php echo $message; ?>
+							</div>
 							<div class="form-group">
 								<label for="username" class="sr-only">username</label>
 								<input type="text" name="username" id="username" class="form-control"
