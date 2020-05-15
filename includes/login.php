@@ -21,6 +21,8 @@
             $login_user_firstname = $row['user_firstname'];
             $login_user_lastname = $row['user_lastname'];
             $login_user_role = $row['user_role'];
+            $login_user_image = $row['user_image'];
+
         }
         if ($username !== $login_username && $password !== $login_user_password) {
             header("Location: ../index.php");
@@ -30,6 +32,7 @@
             $_SESSION['user_firstname'] = $login_user_firstname;
             $_SESSION['user_lastname'] = $login_user_lastname;
             $_SESSION['user_role'] = $login_user_role;
+            $_SESSION['user_image'] = $login_user_image;
 
             header("Location: ../admin/index.php");
         }

@@ -16,6 +16,11 @@
                         </button>
             </span>
             </div>
+           <div style="margin-top: 10px;">
+               <small>
+                   <a  href="../registration.php" >Create an account here</a>
+               </small>
+           </div>
         </form>
     </div>
 
