@@ -1,8 +1,15 @@
-<!-- Blog Sidebar Widgets Column -->
 <div class="col-md-4">
-    <!-- Blog Search Well -->
+
+    <?php
+    if (isset($_SESSION['username'])){ ?>
+        <div class="well">
+        <h4 class="text-center">
+            <?php  echo $_SESSION['username']; ?> you are logged in
+        </h4>
+        </div>
+    <?php }else{
+    ?>
     <div class="well">
-        <h4>Login</h4>
         <form action="includes/login.php" method="post">
             <div class="form-group">
                 <input name="username" type="text" class="form-control" style="margin-bottom: 1rem;"
@@ -23,7 +30,7 @@
            </div>
         </form>
     </div>
-
+<?php } ?>
     <div class="well">
         <h4>Blog Search</h4>
         <form action="search.php" method="post">
