@@ -28,11 +28,9 @@
             if (!$register_user_query) {
                 die('Query Failed' . mysqli_error($connection));
             }
-            $message = "<div class=\"alert alert-info\" role=\"alert\">Your registration has been submitted, please try to <a href='includes/login.php' class=\"alert-link\">log in</a>. 
-									<br>
-									<b>Be aware your account needs to be authorised before you can log in</b> </div>";
+            $message = "<div class=\"alert alert-info\" role=\"alert\">Your registration has been submitted</div>";
         }else{
-        	$message = "<div class=\"alert alert-danger\" role=\"alert\">All fiends must be completed</div>";
+        	$message = "<div class=\"alert alert-danger\" role=\"alert\">All fields must be completed</div>";
 		}
     }else{
     	$message = '';
